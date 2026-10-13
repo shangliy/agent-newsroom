@@ -1,0 +1,4 @@
+# Only needed for the AdalFlow planner/editor (model-backed text). The deterministic
+# pipeline, the tests and --fixture mode use the standard library alone.
+adalflow>=1.1.3,<2
+anthropic>=0.60

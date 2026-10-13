@@ -1,0 +1,16 @@
+[
+  {
+    "id": "example-corner-bakery",
+    "name": "Example Corner Bakery",
+    "website": "https://example.com/corner-bakery",
+    "fictional": true,
+    "category": "bakery",
+    "statement": "Published by the local discovery agent on written authorization from the owners of Example Corner Bakery, who supplied this text and asked for it to be listed. The platform has not verified the business identity.",
+    "summary": "A fictional sample showing how a merchant-authorized note looks. Real entries set fictional to false only after the owner's written authorization is on file.",
+    "about": "We are a two-person sourdough bakery. Loaves come out at 7:30, pastries sell out by noon on weekends. Pre-orders for whole cakes need three days' notice.",
+    "hours": { "Tue-Fri": "07:00-14:00", "Sat-Sun": "08:00-13:00", "Mon": "closed" },
+    "note": "From the owners: we do not deliver, and we only take card payments.",
+    "topics": ["Bakery"],
+    "authorizedUntil": "2027-01-01"
+  }
+]

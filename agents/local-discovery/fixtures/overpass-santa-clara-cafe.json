@@ -1,0 +1,1561 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-10-13T02:35:48Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 428208392,
+  "lat": 37.3890930,
+  "lon": -121.9834240,
+  "tags": {
+    "addr:housenumber": "3113",
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "operator": "Starbucks",
+    "phone": "+1-408-727-1419",
+    "takeaway": "yes",
+    "website": "https://www.starbucks.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 439234263,
+  "lat": 37.3444048,
+  "lon": -121.9326560,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "2221",
+    "addr:postcode": "95050",
+    "addr:state": "CA",
+    "addr:street": "The Alameda",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "internet_access": "wlan",
+    "name": "Voyager Craft Coffee",
+    "opening_hours": "Mo-Su 07:00-17:00",
+    "takeaway": "yes",
+    "website": "https://www.voyagercraftcoffeeorders.com"
+  }
+},
+{
+  "type": "node",
+  "id": 599098661,
+  "lat": 37.3384722,
+  "lon": -121.9948815,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "3551",
+    "addr:postcode": "95051",
+    "addr:state": "CA",
+    "addr:street": "Homestead Road",
+    "amenity": "cafe",
+    "branch": "Homestead & Lawrence - Santa C",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "operator": "Starbucks Coffee Company",
+    "phone": "+1 408-244-1421",
+    "ref": "14910",
+    "takeaway": "yes",
+    "website": "https://www.starbucks.com/store-locator/store/14910/homestead-lawrence-santa-c-3551-homestead-road-santa-clara-ca-950515161-us"
+  }
+},
+{
+  "type": "node",
+  "id": 599326229,
+  "lat": 37.3529575,
+  "lon": -121.9973250,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:country": "US",
+    "addr:housenumber": "3605",
+    "addr:postcode": "95051",
+    "addr:state": "CA",
+    "addr:street": "East El Camino Real",
+    "amenity": "cafe",
+    "branch": "El Camino & Lawrence",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "opening_hours": "Mo-Fr 04:30-24:00, Sa,Su 05:00-00:30",
+    "operator": "Starbucks",
+    "phone": "+1 408-296-5078",
+    "takeaway": "yes",
+    "website": "https://www.starbucks.com/store-locator/store/12317/el-camino-lawrence-3605-el-camino-real-santa-clara-ca-950512605-us"
+  }
+},
+{
+  "type": "node",
+  "id": 599326230,
+  "lat": 37.3517995,
+  "lon": -121.9677618,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "2370",
+    "addr:postcode": "95050",
+    "addr:state": "CA",
+    "addr:street": "El Camino Real",
+    "amenity": "cafe",
+    "branch": "El Camino & San Tomas",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "phone": "+1 408-984-7174",
+    "ref": "15262",
+    "takeaway": "yes",
+    "website": "https://www.starbucks.com/store-locator/store/15262/el-camino-san-tomas-2370-el-camino-real-santa-clara-ca-950504070-us"
+  }
+},
+{
+  "type": "node",
+  "id": 923740504,
+  "lat": 37.4064203,
+  "lon": -121.9417677,
+  "tags": {
+    "addr:city": "San Jose",
+    "addr:housenumber": "31",
+    "addr:postcode": "95134",
+    "addr:street": "Rio Robles East",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "internet_access": "wlan",
+    "name": "Qargo Coffee",
+    "smoking": "no",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 933941606,
+  "lat": 37.3919662,
+  "lon": -121.9817363,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cafeteria",
+    "operator": "Mission College",
+    "website": "https://www.missioncollege.org/gen_info/campus_maps/rooms/cafeteriaMap.html"
+  }
+},
+{
+  "type": "node",
+  "id": 936102098,
+  "lat": 37.3453203,
+  "lon": -121.9367788,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "2605",
+    "addr:postcode": "95050",
+    "addr:state": "CA",
+    "addr:street": "The Alameda",
+    "amenity": "cafe",
+    "branch": "Safeway Santa Clara 763",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "phone": "+1 408-244-6873",
+    "ref": "16317",
+    "takeaway": "yes",
+    "website": "https://www.starbucks.com/store-locator/store/16317/safeway-santa-clara-763-2605-the-alameda-santa-clara-ca-950506003-us"
+  }
+},
+{
+  "type": "node",
+  "id": 1255655331,
+  "lat": 37.3944204,
+  "lon": -121.9460026,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:country": "US",
+    "addr:housenumber": "3932",
+    "addr:postcode": "95054",
+    "addr:state": "CA",
+    "addr:street": "Rivermark Plaza",
+    "amenity": "cafe",
+    "brand": "Peet's Coffee",
+    "brand:wikidata": "Q1094101",
+    "cuisine": "coffee_shop",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "Peet's Coffee",
+    "opening_hours": "Mo-Sa 05:00-22:00; Su 06:00-21:00",
+    "phone": "+1 408-213-0810",
+    "smoking": "outside",
+    "takeaway": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2011578329,
+  "lat": 37.3660937,
+  "lon": -121.9418834,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "donut",
+    "name": "Donut Den"
+  }
+},
+{
+  "type": "node",
+  "id": 2181512494,
+  "lat": 37.4120386,
+  "lon": -121.9536524,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Google Cafeteria, Marketplace"
+  }
+},
+{
+  "type": "node",
+  "id": 2604149612,
+  "lat": 37.3979597,
+  "lon": -121.9969420,
+  "tags": {
+    "addr:housenumber": "1161",
+    "addr:street": "Lawrence Expressway",
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "check_date": "2023-03-15",
+    "cuisine": "bubble_tea",
+    "name": "Pastel Tea Lounge",
+    "opening_hours": "Mo-Su 11:00-21:00"
+  }
+},
+{
+  "type": "node",
+  "id": 2607395529,
+  "lat": 37.3840159,
+  "lon": -121.9952406,
+  "tags": {
+    "addr:city": "Sunnyvale",
+    "addr:housenumber": "540",
+    "addr:postcode": "94085",
+    "addr:state": "CA",
+    "addr:street": "Lawrence Expressway",
+    "addr:unit": "1",
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "bar": "no",
+    "branch": "Lawrence",
+    "brand": "7 Leaves Cafe",
+    "brand:website": "https://7leavescafe.com",
+    "brand:wikidata": "Q118480682",
+    "brand:wikipedia": "en:7 Leaves Cafe",
+    "contact:facebook": "https://www.facebook.com/7LeavesCafe",
+    "contact:instagram": "https://www.instagram.com/7leavescafe/",
+    "contact:tiktok": "https://www.tiktok.com/@7leavescafe_official",
+    "cuisine": "coffee_shop;bubble_tea;tea",
+    "diet:vegan": "yes",
+    "drink:coffee": "yes",
+    "drink:tea": "yes",
+    "drive_through": "no",
+    "indoor_seating": "yes",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "internet_access:ssid": "7Leaves Cafe - Lawrence Expy",
+    "level": "0",
+    "name": "7 Leaves Cafe",
+    "not:name": "7leaves",
+    "opening_hours": "Mo-Fr 07:00-22:00; Sa-Su 08:00-22:00",
+    "outdoor_seating": "no",
+    "payment:app": "yes",
+    "payment:apple_pay": "yes",
+    "payment:cards": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "reservation": "no",
+    "service:print": "yes",
+    "smoking": "no",
+    "takeaway": "yes",
+    "toilets": "yes",
+    "website": "https://7leavescafe.com/locations",
+    "website:menu": "https://7leavescafe.com/menu",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2607395530,
+  "lat": 37.3845272,
+  "lon": -121.9952122,
+  "tags": {
+    "addr:city": "Sunnyvale",
+    "addr:housenumber": "546",
+    "addr:postcode": "94085",
+    "addr:state": "CA",
+    "addr:street": "Lawrence Expressway",
+    "addr:unit": "1",
+    "amenity": "cafe",
+    "bakery": "bagels",
+    "cuisine": "bagel",
+    "name": "Bagel Place Cafe",
+    "phone": "+1-408-720-8226",
+    "shop": "bakery",
+    "website": "http://www.bagelplacecafe.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 2607395539,
+  "lat": 37.3827006,
+  "lon": -121.9952866,
+  "tags": {
+    "addr:city": "Sunnyvale",
+    "addr:housenumber": "520",
+    "addr:postcode": "94085",
+    "addr:state": "CA",
+    "addr:street": "Lawrence Expressway",
+    "addr:unit": "301",
+    "amenity": "cafe",
+    "brand": "Happy Lemon",
+    "brand:wikidata": "Q109968422",
+    "check_date": "2026-10-04",
+    "check_date:opening_hours": "2026-10-04",
+    "cuisine": "bubble_tea",
+    "name": "Happy Lemon",
+    "opening_hours": "Su-Th 11:00-22:00; Fr,Sa 11:00-23:00",
+    "opening_hours:signed": "no",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2607395543,
+  "lat": 37.3818867,
+  "lon": -121.9953483,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "500",
+    "addr:postcode": "94085",
+    "addr:state": "CA",
+    "addr:street": "Lawrence Expressway",
+    "addr:unit": "F",
+    "amenity": "cafe",
+    "cuisine": "sandwich;bagel",
+    "name": "Fresh U Order",
+    "official_name": "Fresh U Order Bakery & Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 2635929495,
+  "lat": 37.3372550,
+  "lon": -121.9941780,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "3568",
+    "addr:postcode": "95051",
+    "addr:state": "CA",
+    "addr:street": "Homestead Road",
+    "amenity": "cafe",
+    "name": "Bernal Bagels and Donuts",
+    "source": "photograph"
+  }
+},
+{
+  "type": "node",
+  "id": 2658424326,
+  "lat": 37.3516699,
+  "lon": -122.0023308,
+  "tags": {
+    "addr:housenumber": "1082",
+    "addr:street": "East El Camino Real",
+    "addr:unit": "6",
+    "amenity": "cafe",
+    "name": "cocohodo",
+    "source": "photograph"
+  }
+},
+{
+  "type": "node",
+  "id": 2686109543,
+  "lat": 37.3800011,
+  "lon": -121.9949599,
+  "tags": {
+    "addr:housenumber": "1208",
+    "addr:unit": "102",
+    "amenity": "cafe",
+    "name": "Nutri Plus Tea",
+    "source": "photograph"
+  }
+},
+{
+  "type": "node",
+  "id": 2686109550,
+  "lat": 37.3800011,
+  "lon": -121.9950363,
+  "tags": {
+    "addr:housenumber": "1208",
+    "addr:unit": "103",
+    "amenity": "cafe",
+    "name": "iChaat Cafe",
+    "source": "photograph"
+  }
+},
+{
+  "type": "node",
+  "id": 3137935929,
+  "lat": 37.3283372,
+  "lon": -121.9661206,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "200",
+    "addr:postcode": "95129",
+    "addr:state": "CA",
+    "addr:street": "Saratoga Avenue",
+    "addr:unit": "10",
+    "amenity": "cafe",
+    "branch": "200 Saratoga Avenue",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "note": "closes at 11 except sunday",
+    "official_name": "Starbucks Coffee",
+    "opening_hours": "Mo-Su 04:30-21:00",
+    "operator": "Starbucks Coffee Company",
+    "phone": "+1 408-296-6808",
+    "takeaway": "yes",
+    "website": "https://www.starbucks.com/store-locator/store/12484/200-saratoga-ave-200-saratoga-ave-santa-clara-ca-950506629-us"
+  }
+},
+{
+  "type": "node",
+  "id": 3548898922,
+  "lat": 37.3521197,
+  "lon": -121.9366760,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "495",
+    "addr:postcode": "95050",
+    "addr:state": "CA",
+    "addr:street": "El Camino Real",
+    "amenity": "cafe",
+    "branch": "El Camino & Railroad",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "phone": "+1 408-248-7343",
+    "ref": "15941",
+    "takeaway": "yes",
+    "website": "https://www.starbucks.com/store-locator/store/15941/el-camino-railroad-495-el-camino-real-santa-clara-ca-950504396-us",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3613960690,
+  "lat": 37.3449582,
+  "lon": -121.9343660,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "2421",
+    "addr:postcode": "95050",
+    "addr:state": "CA",
+    "addr:street": "The Alameda",
+    "addr:unit": "101",
+    "amenity": "cafe",
+    "cuisine": "bubble_tea",
+    "disused:amenity": "fast_food",
+    "disused:brand:wikidata": "Q244457",
+    "disused:cuisine": "sandwich",
+    "name": "Tea Plus",
+    "name:en": "Tea Plus",
+    "name:zh": "水巷茶弄",
+    "old_name": "Subway"
+  }
+},
+{
+  "type": "node",
+  "id": 3678037158,
+  "lat": 37.3446009,
+  "lon": -121.9331760,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "2255",
+    "addr:postcode": "95050",
+    "addr:state": "CA",
+    "addr:street": "The Alameda",
+    "amenity": "cafe",
+    "cuisine": "bubble_tea",
+    "disused:shop": "beauty",
+    "name": "Nabi Cat Cafe",
+    "old_name": "Salon Blu",
+    "strapline": "Snow Ice & Milk Tea",
+    "website": "https://www.nabicatcafe.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 3700772607,
+  "lat": 37.3261898,
+  "lon": -121.9440933,
+  "tags": {
+    "amenity": "cafe",
+    "level": "1",
+    "name": "Mug & Munch"
+  }
+},
+{
+  "type": "node",
+  "id": 3700772609,
+  "lat": 37.3247080,
+  "lon": -121.9448107,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "check_date:opening_hours": "2024-05-11",
+    "cuisine": "coffee_shop",
+    "level": "1",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "opening_hours:signed": "no",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3977606746,
+  "lat": 37.3891475,
+  "lon": -122.0032347,
+  "tags": {
+    "addr:city": "Sunnyvale",
+    "addr:housenumber": "933",
+    "addr:state": "CA",
+    "addr:street": "East Duane Avenue",
+    "amenity": "cafe",
+    "cuisine": "indian",
+    "internet_access": "yes",
+    "name": "Von’s Express Halal",
+    "opening_hours": "11:00-21:00",
+    "phone": "+1-408-542-9766",
+    "smoking": "outside",
+    "website": "https://vonshalal.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 4173741395,
+  "lat": 37.4081714,
+  "lon": -121.9633459,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:country": "US",
+    "addr:housenumber": "2209",
+    "addr:postcode": "95054",
+    "addr:state": "CA",
+    "addr:street": "Tasman Drive",
+    "amenity": "cafe",
+    "check_date": "2026-04-16",
+    "email": "info@mikaylascafe.com",
+    "name": "Mikayla's Cafe",
+    "opening_hours": "Mo-Fr 07:00-14:30; Sa,Su 08:00-15:00",
+    "phone": "+1-408-988-8803",
+    "website": "https://www.mikaylascafe.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 4562827119,
+  "lat": 37.3392710,
+  "lon": -121.9777161,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "830",
+    "addr:postcode": "95051",
+    "addr:state": "CA",
+    "addr:street": "Kiely Boulevard",
+    "amenity": "cafe",
+    "cuisine": "deli",
+    "name": "Erik's Deli",
+    "opening_hours": "Mo-Sa 10:00-20:00; Su 11:00-19:00",
+    "phone": "+1-408-246-1010",
+    "website": "https://www.eriksdelicafe.com/location/santa-clara-kiely-boulevard-location/"
+  }
+},
+{
+  "type": "node",
+  "id": 4570896289,
+  "lat": 37.4045998,
+  "lon": -121.9828216,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Pavillion",
+    "name:en": "Pavillion"
+  }
+},
+{
+  "type": "node",
+  "id": 4876893915,
+  "lat": 37.4041262,
+  "lon": -121.9950878,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "chinese",
+    "name": "Xiang Xiang Noodle"
+  }
+},
+{
+  "type": "node",
+  "id": 4939160352,
+  "lat": 37.3676133,
+  "lon": -121.9943627,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "3555",
+    "addr:postcode": "95051",
+    "addr:state": "CA",
+    "addr:street": "Monroe Street",
+    "addr:unit": "70",
+    "amenity": "cafe",
+    "cuisine": "juice;smoothie;açaí",
+    "name": "Vitality Bowls",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa 08:30-20:30; Su 09:00-20:00",
+    "operator": "Makalu LLC",
+    "outdoor_seating": "yes",
+    "takeaway": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5008481801,
+  "lat": 37.4020697,
+  "lon": -121.9399888,
+  "tags": {
+    "addr:city": "San Jose",
+    "addr:housenumber": "55",
+    "addr:postcode": "95134",
+    "addr:state": "CA",
+    "addr:street": "River Oaks Place",
+    "addr:unit": "40",
+    "amenity": "cafe",
+    "branch": "River Oaks Place and North 1st St",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "opening_hours": "Mo-Fr 05:30-08:00; Sa,Su 06:00-08:00",
+    "phone": "+1 408-712-8597",
+    "ref": "1018755",
+    "takeaway": "yes",
+    "website": "https://www.starbucks.com/store-locator/store/1018755/river-oaks-pl-and-n-1st-st-55-river-oaks-place-40-san-jose-ca-951342064-us"
+  }
+},
+{
+  "type": "node",
+  "id": 5121029938,
+  "lat": 37.4030395,
+  "lon": -121.9331154,
+  "tags": {
+    "addr:city": "San Jose",
+    "addr:housenumber": "3350",
+    "addr:postcode": "95134",
+    "addr:state": "CA",
+    "addr:street": "Zanker Road",
+    "addr:unit": "10",
+    "amenity": "cafe",
+    "branch": "Zanker & Villagio",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "phone": "+1 408-434-1628",
+    "ref": "1005859",
+    "takeaway": "yes",
+    "website": "https://www.starbucks.com/store-locator/store/1005859/zanker-villagio-3350-zanker-road-building-1-suite-10-san-jose-ca-9"
+  }
+},
+{
+  "type": "node",
+  "id": 5172034723,
+  "lat": 37.3380998,
+  "lon": -121.9749043,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "2760",
+    "addr:postcode": "95051",
+    "addr:state": "CA",
+    "addr:street": "Homestead Road",
+    "amenity": "cafe",
+    "branch": "Safeway Santa Clara 700",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "check_date:opening_hours": "2023-07-23",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "name:en": "Starbucks",
+    "name:ru": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "opening_hours:signed": "no",
+    "outdoor_seating": "no",
+    "phone": "+1 408-248-0563",
+    "ref": "17765",
+    "takeaway": "yes",
+    "website": "https://www.starbucks.com/store-locator/store/17765/safeway-santa-clara-700-2760-homestead-road-santa-clara-ca-950515353-us"
+  }
+},
+{
+  "type": "node",
+  "id": 5368495041,
+  "lat": 37.4180725,
+  "lon": -121.9556856,
+  "tags": {
+    "addr:city": "San Jose",
+    "addr:housenumber": "95",
+    "addr:postcode": "95134",
+    "addr:state": "CA",
+    "addr:street": "Holger Way",
+    "amenity": "cafe",
+    "branch": "Target San Jose NORTH 2581",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "outdoor_seating": "no",
+    "phone": "+1 408-834-1527",
+    "ref": "19212",
+    "takeaway": "yes",
+    "website": "https://www.starbucks.com/store-locator/store/19212/target-san-jose-north-2581-95-holger-wy-san-jose-ca-951341372-us"
+  }
+},
+{
+  "type": "node",
+  "id": 5680651599,
+  "lat": 37.3240336,
+  "lon": -121.9685130,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "3787",
+    "addr:postcode": "95051",
+    "addr:state": "CA",
+    "addr:street": "Stevens Creek Boulevard",
+    "addr:unit": "104",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "Cafe Big Mug",
+    "website": "http://coffeefactory-roasters.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 5732773895,
+  "lat": 37.4169300,
+  "lon": -121.9550000,
+  "tags": {
+    "addr:city": "San Jose",
+    "addr:housenumber": "4190",
+    "addr:postcode": "95134",
+    "addr:state": "CA",
+    "addr:street": "North 1st Street",
+    "addr:unit": "70",
+    "amenity": "cafe",
+    "branch": "Holger Wy & North 1st St",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "level": "0",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "opening_hours": "Mo-Fr 05:00-18:00; Sa-Su 06:00-18:00",
+    "outdoor_seating": "yes",
+    "phone": "+1 669-758-2032",
+    "ref": "1030804",
+    "takeaway": "yes",
+    "toilets": "yes",
+    "toilets:access": "customers",
+    "website": "https://www.starbucks.com/store-locator/store/1030804/holger-wy-n-1st-st-4190-n-1st-st-70-san-jose-ca-951341599-us",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5760687520,
+  "lat": 37.4109311,
+  "lon": -121.9460353,
+  "tags": {
+    "addr:city": "San Jose",
+    "addr:housenumber": "3730",
+    "addr:postcode": "95134",
+    "addr:street": "North 1st Street",
+    "addr:unit": "110",
+    "amenity": "cafe",
+    "cuisine": "tea",
+    "name": "Co Ba"
+  }
+},
+{
+  "type": "node",
+  "id": 6110253200,
+  "lat": 37.3362628,
+  "lon": -121.9977247,
+  "tags": {
+    "amenity": "cafe",
+    "level": "0",
+    "name": "177 Courtyard Café",
+    "ref": "177"
+  }
+},
+{
+  "type": "node",
+  "id": 6313249954,
+  "lat": 37.3515494,
+  "lon": -121.9809936,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "3014",
+    "addr:postcode": "95051",
+    "addr:state": "CA",
+    "addr:street": "El Camino Real",
+    "amenity": "cafe",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "Big Mug Coffee Roaster",
+    "outdoor_seating": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6781946686,
+  "lat": 37.3964548,
+  "lon": -121.9742169,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "2401",
+    "addr:postcode": "95054",
+    "addr:state": "CA",
+    "addr:street": "Agnew Drive",
+    "amenity": "cafe",
+    "branch": "California's Great America",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "phone": "+1 408-988-1776",
+    "ref": "1022526",
+    "takeaway": "yes",
+    "website": "https://www.starbucks.com/store-locator/store/1022526/californias-great-america-2401-agnew-dr-santa-clara-ca-95054-us"
+  }
+},
+{
+  "type": "node",
+  "id": 6859149493,
+  "lat": 37.3952648,
+  "lon": -121.9460767,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "3957",
+    "addr:postcode": "95054",
+    "addr:state": "CA",
+    "addr:street": "Rivermark Plaza",
+    "amenity": "cafe",
+    "level": "0",
+    "name": "EggHead Sando Cafe",
+    "opening_hours": "Mo-Fr 07:00-15:00; Sa 07:00-16:00; Su 08:00-16:00",
+    "outdoor_seating": "yes",
+    "takeaway": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6903107840,
+  "lat": 37.3873443,
+  "lon": -121.9601550,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "2030",
+    "addr:postcode": "95054",
+    "addr:state": "CA",
+    "addr:street": "Wyatt Drive",
+    "addr:unit": "110",
+    "amenity": "cafe",
+    "branch": "Montague & Mission College",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "check_date": "2023-07-06",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "phone": "+1 408-588-4070",
+    "ref": "1026419",
+    "takeaway": "yes",
+    "website": "https://www.starbucks.com/store-locator/store/1026419/montague-mission-college-2030-wyatt-drive-110-santa-clara-ca-950541548-us"
+  }
+},
+{
+  "type": "node",
+  "id": 6926714151,
+  "lat": 37.3235973,
+  "lon": -121.9725131,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "3985",
+    "addr:postcode": "95051",
+    "addr:state": "CA",
+    "addr:street": "Stevens Creek Boulevard",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "internet_access": "wlan",
+    "name": "Voyager Craft Coffee",
+    "opening_hours": "Mo-Su 09:00-17:00",
+    "phone": "+1-408-564-5454",
+    "takeaway": "yes",
+    "website": "http://voyagercraftcoffee.com"
+  }
+},
+{
+  "type": "node",
+  "id": 8177961443,
+  "lat": 37.3520160,
+  "lon": -121.9769178,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "2792",
+    "addr:postcode": "95051",
+    "addr:state": "CA",
+    "addr:street": "El Camino Real",
+    "amenity": "cafe",
+    "name": "Dilkush Bakery Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 8185858628,
+  "lat": 37.4127767,
+  "lon": -121.9375955,
+  "tags": {
+    "addr:city": "San Jose",
+    "addr:housenumber": "181",
+    "addr:postcode": "95134",
+    "addr:state": "CA",
+    "addr:street": "East Tasman Drive",
+    "addr:unit": "80",
+    "amenity": "cafe",
+    "description": "coffee, waffles",
+    "level": "0",
+    "name": "Caffe Bene",
+    "opening_hours": "Mo-Su 09:00-20:00",
+    "outdoor_seating": "yes",
+    "takeaway": "yes",
+    "toilets": "yes",
+    "toilets:access": "customers",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 8604433237,
+  "lat": 37.3396164,
+  "lon": -121.9386071,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "71",
+    "addr:postcode": "95050",
+    "addr:state": "CA",
+    "addr:street": "Washington Street",
+    "amenity": "cafe",
+    "branch": "Washington & Linden",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "phone": "+1 408-244-3025",
+    "takeaway": "yes",
+    "website": "https://www.starbucks.com/store-locator/store/16067/washington-linden-71-washington-ave-santa-clara-ca-950506138-us"
+  }
+},
+{
+  "type": "node",
+  "id": 9319663609,
+  "lat": 37.3676472,
+  "lon": -121.9939826,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "3555",
+    "addr:postcode": "95051",
+    "addr:state": "CA",
+    "addr:street": "Monroe Street",
+    "addr:unit": "65",
+    "amenity": "cafe",
+    "branch": "Monroe & Lawrence Expressway",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "opening_hours": "Mo-Fr 05:00-20:00; Sa,Su 05:30-18:30",
+    "phone": "+1 408-691-1440",
+    "takeaway": "yes",
+    "website": "https://www.starbucks.com/store-locator/store/1019545/monroe-lawrence-expy-3555-monroe-street-65-santa-clara-ca-950517819-us"
+  }
+},
+{
+  "type": "node",
+  "id": 9339318291,
+  "lat": 37.3235156,
+  "lon": -121.9547297,
+  "tags": {
+    "addr:city": "San Jose",
+    "addr:housenumber": "3275",
+    "addr:postcode": "95117",
+    "addr:state": "CA",
+    "addr:street": "Stevens Creek Boulevard",
+    "addr:unit": "115",
+    "amenity": "cafe",
+    "name": "Kafe Unik"
+  }
+},
+{
+  "type": "node",
+  "id": 9809848187,
+  "lat": 37.3816693,
+  "lon": -121.9749050,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "2712",
+    "addr:postcode": "95054",
+    "addr:state": "CA",
+    "addr:street": "Augustine Drive",
+    "addr:unit": "110",
+    "amenity": "cafe",
+    "brand": "Gong Cha",
+    "brand:wikidata": "Q5581670",
+    "brand:zh": "貢茶",
+    "cuisine": "bubble_tea",
+    "int_name": "Gong Cha",
+    "level": "0",
+    "name": "Gong Cha",
+    "name:zh": "貢茶",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10160883711,
+  "lat": 37.3252067,
+  "lon": -121.9472297,
+  "tags": {
+    "addr:unit": "2170",
+    "amenity": "cafe",
+    "check_date": "2025-02-17",
+    "cuisine": "bubble_tea",
+    "indoor": "yes",
+    "indoor_seating": "no",
+    "level": "1",
+    "name": "Lucky Tea",
+    "name:zh": "小确茶",
+    "outdoor_seating": "no",
+    "takeaway": "only",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10160932449,
+  "lat": 37.3250870,
+  "lon": -121.9471244,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "2855",
+    "addr:postcode": "95050",
+    "addr:state": "CA",
+    "addr:street": "Stevens Creek Boulevard",
+    "addr:unit": "Ste 1155",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop;tea",
+    "fixme": "brand",
+    "indoor": "yes",
+    "internet_access": "yes",
+    "level": "0",
+    "name": "Capital One 360 Cafe",
+    "opening_hours": "Mo-Sa 10:00-21:00; Su 11:00-20:00",
+    "phone": "+1-408-367-1717",
+    "website": "https://www.capitalone.com/local/",
+    "website:menu": "https://www.capitalone.com/local/food-and-beverage/",
+    "wikidata": "Q139860979"
+  }
+},
+{
+  "type": "node",
+  "id": 10247921977,
+  "lat": 37.4114972,
+  "lon": -121.9768598,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "sandwich;coffee_shop",
+    "level": "0",
+    "name": "Market Cafe",
+    "opening_hours": "Mo-Fr 08:00-15:00",
+    "outdoor_seating": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 11112644779,
+  "lat": 37.3519433,
+  "lon": -121.9910247,
+  "tags": {
+    "addr:housenumber": "3450",
+    "addr:postcode": "95051",
+    "addr:street": "El Camino Real",
+    "addr:unit": "103",
+    "amenity": "cafe",
+    "check_date": "2023-08-13",
+    "cuisine": "bubble_tea",
+    "indoor_seating": "yes",
+    "name": "Teaspoon",
+    "opening_hours": "Mo-Th,Su 11:30-21:30; Fr-Sa 11:30-22:30",
+    "outdoor_seating": "no",
+    "payment:credit_cards": "yes",
+    "phone": "+1-669-292-5700",
+    "website:menu": "https://order.teaspoonlife.com/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11112859132,
+  "lat": 37.3515951,
+  "lon": -121.9929541,
+  "tags": {
+    "addr:housenumber": "3488",
+    "addr:street": "El Camino Real",
+    "amenity": "cafe",
+    "check_date": "2023-08-13",
+    "cuisine": "bubble_tea;dessert;ice_cream;bingsu",
+    "name": "Honey Berry",
+    "opening_hours": "12:00-20:00",
+    "outdoor_seating": "no",
+    "phone": "+1 408-985-9555",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11142796716,
+  "lat": 37.3519919,
+  "lon": -121.9605207,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Peet's Coffee",
+    "brand:wikidata": "Q1094101",
+    "check_date:opening_hours": "2025-03-25",
+    "cuisine": "coffee_shop",
+    "name": "Peet's Coffee",
+    "opening_hours": "Mo-Fr 05:00-17:30; Sa 06:00-17:30; Su 06:30-17:30",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11149641915,
+  "lat": 37.3245468,
+  "lon": -121.9467250,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Eataly",
+    "brand:wikidata": "Q3046645",
+    "level": "0",
+    "name": "Caffè Lavazza",
+    "opening_hours": "08:30-22:00",
+    "operator": "Eataly",
+    "website": "https://www.eataly.com/us_en/stores/silicon-valley/"
+  }
+},
+{
+  "type": "node",
+  "id": 11209714844,
+  "lat": 37.3944349,
+  "lon": -121.9559525,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Oracle Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11230224467,
+  "lat": 37.3810439,
+  "lon": -121.9744000,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "3253",
+    "addr:postcode": "95054",
+    "addr:state": "CA",
+    "addr:street": "Coronado Place",
+    "amenity": "cafe",
+    "branch": "Santa Clara Square",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "check_date": "2023-09-30",
+    "cuisine": "coffee_shop",
+    "internet_access": "wlan",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "opening_hours": "Mo-Fr 05:00-20:00; Sa-Su 05:30-20:00",
+    "phone": "+1 408-988-8776",
+    "takeaway": "yes",
+    "website": "https://www.starbucks.com/store-locator/store/1017198/santa-clara-square-3253-coronado-place-santa-clara-ca-950543000-us"
+  }
+},
+{
+  "type": "node",
+  "id": 11360787591,
+  "lat": 37.3825039,
+  "lon": -121.9710269,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Commons East Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11956177463,
+  "lat": 37.3261107,
+  "lon": -121.9456116,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Matcha Cafe Maiko",
+    "brand:wikidata": "Q113528897",
+    "cuisine": "tea",
+    "level": "1",
+    "name": "Matcha Cafe Maiko",
+    "outdoor_seating": "no",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11956177465,
+  "lat": 37.3257593,
+  "lon": -121.9456142,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Blue Bottle Coffee",
+    "brand:en": "Blue Bottle Coffee",
+    "brand:ja": "ブルーボトルコーヒー",
+    "brand:wikidata": "Q4928917",
+    "cuisine": "coffee_shop",
+    "drive_through": "no",
+    "level": "1",
+    "name": "Blue Bottle Coffee",
+    "name:en": "Blue Bottle Coffee",
+    "name:ja": "ブルーボトルコーヒー",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11988990831,
+  "lat": 37.3261679,
+  "lon": -121.9446614,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Hui Lau Shan",
+    "brand:en": "Hui Lau Shan",
+    "brand:wikidata": "Q5934913",
+    "brand:zh": "許留山",
+    "cuisine": "asian;dessert",
+    "level": "1",
+    "name": "Hui Lau Shan",
+    "name:en": "Hui Lau Shan",
+    "name:zh": "許留山",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11989008299,
+  "lat": 37.3261350,
+  "lon": -121.9440967,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2026-07-02",
+    "level": "1",
+    "name": "R&B Tea"
+  }
+},
+{
+  "type": "node",
+  "id": 11989702582,
+  "lat": 37.3252189,
+  "lon": -121.9454679,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2026-09-20",
+    "cuisine": "bubble_tea",
+    "level": "1",
+    "name": "Pink Pink Tea Shoppe"
+  }
+},
+{
+  "type": "node",
+  "id": 12019980346,
+  "lat": 37.3251436,
+  "lon": -121.9441198,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "CoCo",
+    "brand:wikidata": "Q65084369",
+    "cuisine": "bubble_tea",
+    "level": "0",
+    "name": "CoCo Fresh Tea & Juice",
+    "short_name": "CoCo",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12021280189,
+  "lat": 37.3244997,
+  "lon": -121.9463572,
+  "tags": {
+    "amenity": "cafe",
+    "level": "0",
+    "name": "Rabbit Rabbit Tea",
+    "outdoor_seating": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 12040477249,
+  "lat": 37.3918260,
+  "lon": -121.9770375,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "check_date": "2025-12-10",
+    "check_date:opening_hours": "2025-12-10",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "opening_hours": "Mo-Fr 05:00-19:00; Sa,Su 05:30-17:30",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12143271261,
+  "lat": 37.3861818,
+  "lon": -121.9609016,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "3700",
+    "addr:postcode": "95054",
+    "addr:state": "CA",
+    "addr:street": "Thomas Road",
+    "addr:unit": "101",
+    "amenity": "cafe",
+    "brand": "Bambu",
+    "brand:wikidata": "Q83437245",
+    "cuisine": "vietnamese;bubble_tea",
+    "disused:amenity": "cafe",
+    "disused:brand": "Starbucks",
+    "disused:brand:wikidata": "Q37158",
+    "disused:cuisine": "coffee_shop",
+    "email": "santaclara@drinkbambu.com",
+    "name": "Bambu",
+    "old_name": "Starbucks",
+    "opening_hours": "Mo-Fr 11:00-18:30; Sa-Su 12:00-17:00",
+    "phone": "+1 408-352-5365",
+    "takeaway": "yes",
+    "website": "https://www.drinkbambu.com/location-pages/bambu-santa-clara"
+  }
+},
+{
+  "type": "node",
+  "id": 12245021842,
+  "lat": 37.3536863,
+  "lon": -121.9939703,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "3561",
+    "addr:postcode": "95051",
+    "addr:state": "CA",
+    "addr:street": "El Camino Real",
+    "addr:unit": "75",
+    "amenity": "cafe",
+    "branch": "Santa Clara",
+    "brand": "Paris Baguette",
+    "brand:wikidata": "Q62605260",
+    "cuisine": "dessert",
+    "name": "Paris Baguette",
+    "opening_hours": "Mo-Su 07:00-21:00",
+    "phone": "+1 408-260-0404",
+    "ref": "3011",
+    "shop": "bakery",
+    "website": "https://parisbaguette.com/locations/ca/santa-clara/3561-el-camino-real"
+  }
+},
+{
+  "type": "node",
+  "id": 12442492822,
+  "lat": 37.3530830,
+  "lon": -121.9393896,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "1 Oz Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 12470631319,
+  "lat": 37.3861364,
+  "lon": -122.0000437,
+  "tags": {
+    "addr:city": "Sunnyvale",
+    "addr:housenumber": "1034",
+    "addr:postcode": "94085",
+    "addr:state": "CA",
+    "addr:street": "Indian Wells Avenue",
+    "amenity": "cafe",
+    "name": "Redwood Place Cafe & Market",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12597272301,
+  "lat": 37.3702427,
+  "lon": -121.9971071,
+  "tags": {
+    "addr:housenumber": "401",
+    "addr:postcode": "94086",
+    "addr:street": "Willow Avenue",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop;sandwich",
+    "internet_access": "wlan",
+    "name": "Coffeebar Sunnyvale",
+    "opening_hours": "Mo-Th 07:00-15:00; Fr-Su 07:00-18:00",
+    "website": "https://coffeebar.com/locations/",
+    "website:menu": "https://coffeebar.square.site/#24"
+  }
+},
+{
+  "type": "node",
+  "id": 13606727901,
+  "lat": 37.3485415,
+  "lon": -121.9457831,
+  "tags": {
+    "addr:housenumber": "1171",
+    "addr:postcode": "95050",
+    "addr:street": "Homestead Road",
+    "amenity": "cafe",
+    "check_date": "2026-02-27",
+    "cuisine": "bubble_tea;coffee_shop",
+    "level": "0",
+    "name": "Jiaren Cafe",
+    "website": "https://www.jiarencafe.com/",
+    "website:menu": "https://www.jiarencafe.com/s/order?location=XBWBGQTCRDT5Z"
+  }
+},
+{
+  "type": "node",
+  "id": 13646623298,
+  "lat": 37.3459745,
+  "lon": -121.9790708,
+  "tags": {
+    "addr:city": "Santa Clara",
+    "addr:housenumber": "1080",
+    "addr:postcode": "95051",
+    "addr:state": "CA",
+    "addr:street": "Kiely Boulevard",
+    "amenity": "cafe",
+    "cuisine": "bubble_tea",
+    "name": "Boba Pup",
+    "opening_hours": "Mo-Su 12:00-20:00",
+    "outdoor_seating": "yes",
+    "website": "https://www.bobapup.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 13711689735,
+  "lat": 37.3736276,
+  "lon": -121.9994071,
+  "tags": {
+    "addr:city": "Sunnyvale",
+    "addr:housenumber": "1120",
+    "addr:postcode": "94086",
+    "addr:state": "CA",
+    "addr:street": "Kifer Road",
+    "addr:unit": "Suite C",
+    "amenity": "cafe",
+    "cuisine": "bubble_tea",
+    "internet_access": "yes",
+    "internet_access:fee": "customers",
+    "name": "Chun Yang Tea",
+    "opening_hours": "Mo-Su 12:00-18:00",
+    "outdoor_seating": "yes",
+    "phone": "+14087435088",
+    "website": "https://order.snackpass.co/chunyangtea"
+  }
+},
+{
+  "type": "node",
+  "id": 13871662787,
+  "lat": 37.3246703,
+  "lon": -121.9455761,
+  "tags": {
+    "amenity": "cafe",
+    "level": "1",
+    "name": "Hello Kitty Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 13871699503,
+  "lat": 37.3248250,
+  "lon": -121.9468526,
+  "tags": {
+    "amenity": "cafe",
+    "level": "1",
+    "name": "Jell & Chill",
+    "shop": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13902305361,
+  "lat": 37.3250703,
+  "lon": -121.9441388,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "bubble_tea",
+    "level": "0",
+    "name": "Rabbit Rabbit Cream"
+  }
+}
+
+  ]
+}
