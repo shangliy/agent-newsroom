@@ -122,7 +122,9 @@ class Composition(unittest.TestCase):
         a = compose.compose_discovery(self.area, "cafe", self.selected, retrieved_at="2026-10-12T20:00:00Z", osm_timestamp="2026-10-12T01:00:00Z")
         b = compose.compose_discovery(self.area, "cafe", self.selected, retrieved_at="2026-11-30T09:00:00Z", osm_timestamp="2026-11-30T01:00:00Z")
         self.assertEqual(memory.fingerprint(a), memory.fingerprint(b))
-        self.assertNotEqual(memory.fingerprint(a), memory.fingerprint({**a, "summary": "changed"}))
+        self.assertNotEqual(memory.fingerprint(a), memory.fingerprint({**a, "title": "changed"}))
+        c = compose.compose_discovery(self.area, "cafe", self.selected, retrieved_at="2026-10-12T20:00:00Z", total_found=999)
+        self.assertEqual(memory.fingerprint(a), memory.fingerprint(c))  # count drift between mirrors is not a change
         self.assertNotIn("2026-10-12", a["blocks"][0]["text"])
 
     def test_cap_at_twenty_places(self):
@@ -173,11 +175,11 @@ class MemoryAndPublishing(unittest.TestCase):
         self.assertEqual(report["shown"], 10)
         first = scout.publish(doc, report)
         again = scout.publish(doc, report)
-        self.assertEqual((first["revision"], again["revision"], again["localReplay"]), (1, 1, True))
+        self.assertEqual((first["revision"], again["revision"], again["unchanged"]), (1, 1, True))
         changed = {**doc, "summary": doc["summary"] + " Updated."}
         third = scout.publish(changed, report)
         self.assertEqual(third["revision"], 2)
-        self.assertEqual([c for c in news.calls if c[0] == "publish"], [("publish", 1), ("publish", 1), ("publish", 2)])
+        self.assertEqual([c for c in news.calls if c[0] == "publish"], [("publish", 1), ("publish", 2)])
         self.assertEqual(mem.remember_venues(osm.select_venues(osm.parse_venues(OVERPASS)[0], 5), doc["contentId"]), {"new": 5, "total": 5})
         mem.close()
 

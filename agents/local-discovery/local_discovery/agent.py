@@ -168,12 +168,16 @@ class LocalScout:
         """Memory decides the revision; identical content replays the same revision (server is idempotent)."""
         fp = fingerprint(document)
         revision, replay = self.memory.plan_revision(document["contentId"], fp)
+        if replay:  # same places and text as the published revision: nothing material changed, do not republish
+            known = self.memory.brief(document["contentId"]) or {}
+            return {"publicationId": known.get("publicationId"), "revision": revision, "unchanged": True,
+                    "url": f"{self.newsroom.origin}/p/{known.get('publicationId')}" if known.get("publicationId") else None}
         document = {**document, "revision": revision}
         self.newsroom.validate(document)
         result = self.newsroom.publish(document)
         self.memory.record(document["contentId"], revision, fp, result.get("publicationId"), brief)
         return {"publicationId": result.get("publicationId"), "revision": result.get("revision"), "replayed": result.get("replayed"),
-                "localReplay": replay, "url": result.get("url")}
+                "unchanged": False, "url": result.get("url")}
 
     def merchant(self, entry: dict) -> dict:
         return compose_merchant(entry, retrieved_at=now_iso())

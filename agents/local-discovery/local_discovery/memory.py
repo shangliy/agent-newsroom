@@ -17,10 +17,16 @@ VOLATILE = ("revision", "extensions")  # extensions carry run metadata such as t
 
 
 def fingerprint(document: dict) -> str:
-    """Stable hash of the substantive content: ignores revision, run metadata and evidence retrieval dates."""
-    body = {k: v for k, v in document.items() if k not in VOLATILE}
-    if isinstance(body.get("evidence"), list):
-        body["evidence"] = [{k: v for k, v in e.items() if k != "retrievedAt"} for e in body["evidence"]]
+    """Hash of the material content only: id, title, origin, listed places and picks.
+
+    Counts and timestamps vary between Overpass mirrors with different data freshness, so they do not
+    count as a change; a new revision is published only when the places or the editorial text differ.
+    """
+    blocks = {b["id"]: b for b in document.get("blocks", [])}
+    body = {"contentId": document.get("contentId"), "title": document.get("title"), "origin": document.get("origin"),
+            "rows": blocks.get("places", {}).get("rows"), "picks": blocks.get("picks", {}).get("text"),
+            "reading": blocks.get("reading", {}).get("text"), "about": blocks.get("about", {}).get("text"),
+            "hours": blocks.get("hours", {}).get("rows")}
     return hashlib.sha256(json.dumps(body, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()).hexdigest()
 
 
