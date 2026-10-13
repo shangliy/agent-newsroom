@@ -176,7 +176,7 @@ class MemoryAndPublishing(unittest.TestCase):
         first = scout.publish(doc, report)
         again = scout.publish(doc, report)
         self.assertEqual((first["revision"], again["revision"], again["unchanged"]), (1, 1, True))
-        changed = {**doc, "summary": doc["summary"] + " Updated."}
+        changed = {**doc, "title": doc["title"] + " (updated)"}
         third = scout.publish(changed, report)
         self.assertEqual(third["revision"], 2)
         self.assertEqual([c for c in news.calls if c[0] == "publish"], [("publish", 1), ("publish", 2)])
