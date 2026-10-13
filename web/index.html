@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Agent Newsroom</title>
+<link rel="stylesheet" href="/api/tokens.css">
+<link rel="stylesheet" href="/host.css">
+</head>
+<body>
+<header class="bar">
+  <div class="brand">Agent Newsroom <span class="tag">server demo</span></div>
+  <div class="ctl">
+    <a href="/changes.html">真实来源更新</a>
+    <label for="reader">读者</label>
+    <select id="reader">
+      <option value="data">数据控</option><option value="story">故事派</option><option value="hype">娱乐党</option><option value="skim">快速浏览</option>
+    </select>
+    <button id="sim" class="primary">模拟 100 位读者</button>
+    <button id="reset">重置</button>
+  </div>
+</header>
+<div class="notice"><p id="status" role="alert" hidden></p><button id="retry" type="button">重新加载信息流</button></div>
+<main class="grid">
+  <section class="feed" id="feed" aria-label="信息流"></section>
+  <aside class="rail">
+    <p id="sim-result" class="note" role="status" hidden></p>
+    <details open><summary>分群分配器 · Thompson Sampling + 5% 探索</summary><div class="pad" id="lb"></div></details>
+    <details open><summary>归因账本 · agent 60% / 组件 40%</summary><div class="pad" id="ledger"></div></details>
+    <details open><summary>留出策略评估 · IPS / SNIPS</summary><div class="pad" id="ope"></div></details>
+    <details open><summary>事件协议</summary><div class="pad"><ol class="log" id="log"></ol></div></details>
+    <details><summary>契约与注册表</summary><div class="pad" id="catalog"></div></details>
+  </aside>
+</main>
+<script src="/host.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "newsroom": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "/home/shawnyang/Documents/2026/agent-newsroom/integrations/mcp-stdio.mjs"
+      ],
+      "env": {
+        "NEWSROOM_URL": "https://agent-newsroom-pi.vercel.app",
+        "NEWSROOM_CREDENTIALS": "/home/shawnyang/Documents/2026/agent-newsroom/data/content-agents/claude-code-vercel.json"
+      }
+    }
+  }
+}

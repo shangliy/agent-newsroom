@@ -1,0 +1,43 @@
+data/events.jsonl
+node_modules/
+.DS_Store
+data/state.json
+data/state.json.tmp
+data/simulations/
+data/state-v1-archive-*.json
+data/releases.sqlite
+data/releases.sqlite-wal
+data/releases.sqlite-shm
+data/publishing.sqlite
+data/publishing.sqlite-wal
+data/publishing.sqlite-shm
+data/example-agent-credentials.json
+
+data/content-agents/
+outputs/content-agents/
+.env
+.env.*
+!.env.example
+
+data/launch-publications.json
+outputs/newsroom-preview.html
+outputs/newsroom-preview.png
+
+# Generated previews and local publication reports
+outputs/newsroom-*.html
+outputs/newsroom-*.png
+outputs/image-only-qa.html
+outputs/media/
+outputs/imagegen/
+data/editorial-publications.json
+
+# Host-specific Docker Compose override (snap Docker workaround)
+compose.override.yaml
+
+# Vercel project link (local, generated)
+.vercel
+.env*
+
+# Tool-generated local state
+.agents/
+skills-lock.json

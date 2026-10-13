@@ -1,0 +1,18 @@
+/* Design tokens — the ONLY colors, fonts and motion curves a component may use.
+   Served to the host page and injected into every component iframe. */
+:root{
+  --bg:#f2f4f3; --surface:#ffffff; --surface-2:#e9edeb; --fg:#172120; --muted:#5e6b68; --line:#d5dbd8;
+  --accent:#0f6e73; --accent-soft:#d7ecec; --accent-ink:#0a4e52; --accent-contrast:#ffffff;
+  --live:#c9402e; --good:#2e7d45; --warn:#a56a1c;
+  --font:"IBM Plex Sans","PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r:10px; --ease:cubic-bezier(.2,.7,.2,1); --dur:.45s;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#111615; --surface:#1a2120; --surface-2:#222b29; --fg:#e6ecea; --muted:#98a5a2; --line:#2b3533;
+  --accent:#5cc2c5; --accent-soft:#163a3c; --accent-ink:#9fe0e2; --accent-contrast:#0b1413;
+  --live:#ff7d68; --good:#7fcf8e; --warn:#e2ab57; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#111615; --surface:#1a2120; --surface-2:#222b29; --fg:#e6ecea; --muted:#98a5a2; --line:#2b3533;
+  --accent:#5cc2c5; --accent-soft:#163a3c; --accent-ink:#9fe0e2; --accent-contrast:#0b1413;
+  --live:#ff7d68; --good:#7fcf8e; --warn:#e2ab57; color-scheme:dark }

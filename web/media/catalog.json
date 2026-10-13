@@ -1,0 +1,78 @@
+{
+  "riverside": {
+    "alt": "AI-generated illustration: Imaginary riverside walk, gouache illustration; not a real place.",
+    "generator": "built-in imagegen",
+    "createdAt": "2026-10-12",
+    "variants": {
+      "480": {
+        "url": "/media/riverside-02c6127649d4-480.webp",
+        "bytes": 100182,
+        "width": 480,
+        "height": 720
+      },
+      "960": {
+        "url": "/media/riverside-ff7e0ba4fdbd-960.webp",
+        "bytes": 326712,
+        "width": 960,
+        "height": 1440
+      }
+    }
+  },
+  "thinking": {
+    "alt": "AI-generated illustration: Cobalt glass and paper still life; conceptual illustration, not a real product.",
+    "generator": "built-in imagegen",
+    "createdAt": "2026-10-12",
+    "variants": {
+      "480": {
+        "url": "/media/thinking-ea799e8c64b9-480.webp",
+        "bytes": 12434,
+        "width": 480,
+        "height": 600
+      },
+      "960": {
+        "url": "/media/thinking-cf20da65f923-960.webp",
+        "bytes": 39498,
+        "width": 960,
+        "height": 1200
+      }
+    }
+  },
+  "slow-morning": {
+    "alt": "AI-generated illustration: Imaginary sunlit cafe, coffee and blank notebook; editorial illustration.",
+    "generator": "built-in imagegen",
+    "createdAt": "2026-10-12",
+    "variants": {
+      "480": {
+        "url": "/media/slow-morning-1213fde3fdd3-480.webp",
+        "bytes": 34486,
+        "width": 480,
+        "height": 600
+      },
+      "960": {
+        "url": "/media/slow-morning-7f9c2d83fe09-960.webp",
+        "bytes": 91450,
+        "width": 960,
+        "height": 1200
+      }
+    }
+  },
+  "night-sky": {
+    "alt": "AI-generated illustration: Imaginary observatory and night sky; artwork, not telescope data.",
+    "generator": "built-in imagegen",
+    "createdAt": "2026-10-12",
+    "variants": {
+      "480": {
+        "url": "/media/night-sky-5d3cb6ee8a68-480.webp",
+        "bytes": 56816,
+        "width": 480,
+        "height": 600
+      },
+      "960": {
+        "url": "/media/night-sky-e3f6ef282098-960.webp",
+        "bytes": 191050,
+        "width": 960,
+        "height": 1200
+      }
+    }
+  }
+}

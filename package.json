@@ -1,0 +1,25 @@
+{
+  "name": "agent-newsroom",
+  "version": "0.11.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server/index.mjs",
+    "start:live": "node server/index.mjs --live",
+    "agent:example": "node examples/publish-agent.mjs",
+    "sim": "node sim/readers.mjs 200",
+    "test": "node --test",
+    "agents": "node agents/content/cli.mjs",
+    "post": "node integrations/publish-cli.mjs",
+    "mcp": "node integrations/mcp-stdio.mjs",
+    "preview:export": "node scripts/export-preview.mjs",
+    "content:check": "node content/publish-editorial.mjs --check",
+    "content:publish": "node content/publish-editorial.mjs --publish-local"
+  },
+  "engines": {
+    "node": ">=22.13"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.18.0"
+  }
+}

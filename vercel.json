@@ -1,0 +1,15 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "npm install --omit=dev",
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "rewrites": [{ "source": "/(.*)", "destination": "/api/index" }],
+  "functions": {
+    "api/index.mjs": {
+      "includeFiles": "{web/**,data/sources.json}",
+      "maxDuration": 15,
+      "memory": 512
+    }
+  }
+}

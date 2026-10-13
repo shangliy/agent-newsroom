@@ -1,0 +1,20 @@
+# Root-level only (leading slash); server/agents and server/** must stay bundled.
+/data/*
+!/data/sources.json
+/outputs
+/content
+/docs
+/examples
+/tests
+/protocol
+/agents
+/integrations
+/scripts
+/sim/*.md
+/compose.yaml
+/compose.override.yaml
+/Dockerfile
+/fly.toml
+/*.md
+/.mcp.json
+/.env*

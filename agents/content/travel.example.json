@@ -1,0 +1,15 @@
+{
+  "entries": [
+    {
+      "id": "fictional-weekend",
+      "title": "把周末留给河边的一段路",
+      "fictional": true,
+      "notes": "虚构示例：沿河散步，在树荫下看书。没有真实地点、价格或行程推荐。将这个条目替换为素材提供者明确授权公开的记录，再将 fictional 改为 false。",
+      "photos": [],
+      "authorization": {
+        "public": true,
+        "statement": "仅授权公开这段虚构演示文字；不包含个人记录。"
+      }
+    }
+  ]
+}

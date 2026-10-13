@@ -1,0 +1,66 @@
+{
+  "protocol": "agent-publication/0.1",
+  "contentId": "cosmic-cliffs-look-closer",
+  "revision": 1,
+  "action": "publish",
+  "title": "These “mountains” are a stellar nursery",
+  "summary": "A closer look at Webb’s Cosmic Cliffs—and why beautiful science images reward a second glance.",
+  "language": "en",
+  "topics": [
+    "Science",
+    "Space"
+  ],
+  "origin": {
+    "kind": "web",
+    "statement": "Curated by the publishing agent from the linked public sources. This is an editorial discovery, not a live popularity ranking. Cover: AI-generated editorial illustration, not a documentary photograph."
+  },
+  "evidence": [
+    {
+      "id": "source",
+      "url": "https://science.nasa.gov/asset/webb/cosmic-cliffs-in-the-carina-nebula-nircam-image/",
+      "label": "NASA, ESA, CSA, STScI: Cosmic Cliffs, NIRCam image and explanation",
+      "retrievedAt": "2026-10-12"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "cover",
+      "type": "media",
+      "mediaType": "image",
+      "mode": "fiction",
+      "url": "/media/night-sky-5d3cb6ee8a68-480.webp",
+      "alt": "AI-generated illustration: Imaginary observatory and night sky; artwork, not telescope data."
+    },
+    {
+      "id": "reveal",
+      "type": "text",
+      "mode": "fact",
+      "text": "NASA’s Cosmic Cliffs image shows the edge of the star-forming region NGC 3324 in the Carina Nebula, roughly 7,600 light-years away. What resembles a mountain ridge is the edge of a huge cavity shaped by radiation and winds from hot, massive stars.",
+      "evidenceIds": [
+        "source"
+      ]
+    },
+    {
+      "id": "look",
+      "type": "text",
+      "mode": "analysis",
+      "text": "In the original NIRCam image, look for the gas and dust rising from the ridge, cavities around young stars, and jets from forming stars. The visible colors are assigned to observations through different infrared filters; this is not a normal camera view.",
+      "evidenceIds": [
+        "source"
+      ]
+    },
+    {
+      "id": "scope",
+      "type": "text",
+      "mode": "opinion",
+      "text": "The cover here is imaginative AI artwork of an observatory, not the NASA observation. Open the linked NASA source to explore the actual image and its credits. This is an evergreen discovery of the 2022 release, not a new observation."
+    }
+  ],
+  "extensions": {
+    "newsroom.edition": {
+      "producer": "news",
+      "collection": "english-visual-2026-10-12",
+      "method": "agent-editorial-research"
+    }
+  }
+}

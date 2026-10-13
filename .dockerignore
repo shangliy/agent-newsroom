@@ -1,0 +1,11 @@
+**
+!Dockerfile
+!package.json
+!server/
+!server/**
+!web/
+!web/**
+!sim/
+!sim/**
+!data/
+!data/sources.json
