@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { selectPublications, readSaved, coverImage } from '../web/discovery.js';
+import { selectPublications, readSaved, coverImage, tableFacets, filterRows } from '../web/discovery.js';
 import { VERSION, validatePublication } from '../server/publishing/protocol.mjs';
 const doc = () => ({ protocol: VERSION, contentId: 'note', revision: 1, action: 'publish', title: '周末旅行', summary: '给散步留一点时间', language: 'zh-CN', topics: ['旅行'], blocks: [{ id: 'body', type: 'text', mode: 'opinion', text: '我更喜欢步行。' }], evidence: [] });
 
@@ -38,4 +38,28 @@ test('损坏或禁用的收藏存储降级，只有图片成为封面', () => {
   assert.equal(coverImage({ blocks: [{ type: 'media', mediaType: 'video' }] }), undefined);
   const image = { type: 'media', mediaType: 'image', url: 'https://example.com/a.jpg' };
   assert.equal(coverImage({ blocks: [{ type: 'text' }, image] }), image);
+});
+
+test('查询按字段加权与新鲜度排序，同一发布者被打散，正文与表格单元格可检索', () => {
+  const now = Date.parse('2026-10-20T00:00:00Z'), day = 864e5;
+  const post = (id, agentId, title, extra = {}, age = 0) => ({ publicationId: id, action: 'publish', createdAt: new Date(now - age * day).toISOString(),
+    agent: { id: agentId, name: agentId }, document: { ...doc(), title, summary: '', topics: [], ...extra } });
+  const rows = [
+    post('a1', 'scout', 'Cafés in Santa Clara', { blocks: [{ id: 't', type: 'table', mode: 'fact', columns: ['Place', 'Features'], rows: [['Chun Yang Tea', 'Independent, Wi-Fi']] }] }),
+    post('a2', 'scout', 'Cafés in Sunnyvale'), post('a3', 'scout', 'Cafés in San Jose'),
+    post('b1', 'other', 'Older cafés guide', {}, 20), post('c1', 'other', 'Bakeries'),
+  ];
+  assert.deepEqual(selectPublications(rows, { query: 'wi-fi santa', now }).map(p => p.publicationId), ['a1']);
+  assert.deepEqual(selectPublications(rows, { query: 'cafés', now }).map(p => p.publicationId), ['a1', 'b1', 'a2', 'a3']);
+  const crowdFree = selectPublications(rows, { query: 'cafés', now }).slice(0, 2).map(p => p.agent.id);
+  assert.deepEqual(crowdFree, ['scout', 'other']);
+  assert.deepEqual(selectPublications(rows, { now }).map(p => p.publicationId), ['a1', 'a2', 'a3', 'b1', 'c1']);
+});
+
+test('表格特征列生成区分度高的筛选标签，组合筛选取交集', () => {
+  const block = { columns: ['Place', 'Features as tagged'], rows: [['A', 'Independent, Wi-Fi'], ['B', 'Independent, Wi-Fi, Outdoor seating'], ['C', 'Chain, Wi-Fi'], ['D', 'Independent, Outdoor seating'], ['E', '—']] };
+  assert.deepEqual(tableFacets(block, 'Features as tagged'), [{ label: 'Independent', count: 3 }, { label: 'Wi-Fi', count: 3 }, { label: 'Outdoor seating', count: 2 }]);
+  assert.deepEqual(filterRows(block, 'Features as tagged', ['Independent', 'Wi-Fi']).map(r => r[0]), ['A', 'B']);
+  assert.equal(filterRows(block, 'Features as tagged', []).length, 5);
+  assert.deepEqual(tableFacets(block, 'Missing'), []);
 });

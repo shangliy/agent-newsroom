@@ -7,6 +7,7 @@ business websites.
 from __future__ import annotations
 
 import json
+import re
 import time
 import urllib.error
 import urllib.parse
@@ -160,6 +161,10 @@ class Venue:
         return site if site.startswith(("https://", "http://")) else ""
 
     @property
+    def brand(self) -> str:
+        return self.tags.get("brand", "")
+
+    @property
     def cuisine(self) -> str:
         return self.tags.get("cuisine", "").replace(";", ", ").replace("_", " ")
 
@@ -196,8 +201,56 @@ def search_places(area: Area, category: str, limit: int = 80, endpoints=OVERPASS
     raise last or SourceError("NETWORK", "no Overpass endpoint answered")
 
 
-def select_venues(venues: list[Venue], limit: int) -> list[Venue]:
-    """Deduplicate by name + street, prefer places with hours and a website, then alphabetical."""
+# OSM tag -> feature label. Only explicit tags count; a missing tag is "unknown", never "no".
+FEATURE_TAGS = (
+    ("internet_access", ("wlan", "yes", "wifi"), "Wi-Fi"),
+    ("outdoor_seating", ("yes",), "Outdoor seating"),
+    ("wheelchair", ("yes",), "Wheelchair accessible"),
+    ("takeaway", ("yes", "only"), "Takeaway"),
+    ("drive_through", ("yes",), "Drive-through"),
+    ("diet:vegan", ("yes", "only"), "Vegan options"),
+    ("diet:vegetarian", ("yes", "only"), "Vegetarian options"),
+    ("diet:gluten_free", ("yes", "only"), "Gluten-free options"),
+    ("dog", ("yes",), "Dogs welcome"),
+)
+_LATE = re.compile(r"-(2[1-4]|0[0-4]):\d\d")
+
+
+def venue_features(v: Venue, chain_keys: set[str] = frozenset()) -> list[str]:
+    """Fine-grained, evidence-backed labels for one place, derived only from its own map tags."""
+    out = ["Chain" if chain_key(v) in chain_keys or v.brand else "Independent"]
+    out += [label for key, values, label in FEATURE_TAGS if v.tags.get(key, "").lower() in values]
+    if v.hours and (_LATE.search(v.hours) or v.hours.strip() == "24/7"):
+        out.append("Open after 9pm")
+    if v.tags.get("website:menu"):
+        out.append("Menu online")
+    out += [c.strip().capitalize() for c in v.cuisine.split(",") if c.strip()][:3]
+    return list(dict.fromkeys(out))
+
+
+def chain_key(v: Venue) -> str:
+    return (v.tags.get("brand:wikidata") or v.brand or v.name).lower()
+
+
+def chain_keys(venues: list[Venue], min_locations: int = 3) -> set[str]:
+    """Brands tagged in OSM, plus untagged names mapped at several locations in the area (name density)."""
+    counts: dict[str, int] = {}
+    for v in venues:
+        counts[chain_key(v)] = counts.get(chain_key(v), 0) + 1
+    return {chain_key(v) for v in venues if v.brand} | {k for k, n in counts.items() if n >= min_locations}
+
+
+def completeness(v: Venue) -> float:
+    return 2 * bool(v.hours) + 2 * bool(v.website) + bool(v.street) + 0.25 * min(4, sum(v.tags.get(k, "").lower() in vals for k, vals, _ in FEATURE_TAGS))
+
+
+def select_venues(venues: list[Venue], limit: int, per_brand: int = 2) -> list[Venue]:
+    """Deduplicate by name + street, rank by record completeness, and cap each brand at `per_brand` places.
+
+    Chains map well (19 of 80 Santa Clara cafés are one brand), so pure completeness sorting fills the
+    list with them. The cap keeps the excerpt about the area rather than one brand; overflow is used only
+    when there are not enough other places to reach `limit`. Ties are alphabetical, so output is stable.
+    """
     seen, unique = set(), []
     for v in venues:
         key = (v.name.lower(), v.street.lower())
@@ -205,5 +258,10 @@ def select_venues(venues: list[Venue], limit: int) -> list[Venue]:
             continue
         seen.add(key)
         unique.append(v)
-    unique.sort(key=lambda v: (not v.hours, not v.website, v.name.lower()))
-    return unique[:limit]
+    unique.sort(key=lambda v: (-completeness(v), v.name.lower()))
+    taken, overflow, per = [], [], {}
+    for v in unique:
+        k = chain_key(v)
+        (taken if per.get(k, 0) < per_brand else overflow).append(v)
+        per[k] = per.get(k, 0) + 1
+    return (taken + overflow)[:limit]

@@ -9,7 +9,7 @@ from __future__ import annotations
 import re
 import unicodedata
 
-from .osm import CATEGORIES, Area, Venue
+from .osm import CATEGORIES, Area, Venue, chain_keys, venue_features
 
 PROTOCOL = "agent-publication/0.1"
 MAX_PLACES = 20  # keeps evidence ≤ 50 and the request well under 32 KB
@@ -29,7 +29,9 @@ def _cell(value: str, limit: int = 1000) -> str:
 
 
 def compose_discovery(area: Area, category: str, venues: list[Venue], *, retrieved_at: str, osm_timestamp: str | None = None,
-                      editorial: dict | None = None, model: str | None = None, total_found: int | None = None) -> dict:
+                      editorial: dict | None = None, model: str | None = None, total_found: int | None = None,
+                      population: list[Venue] | None = None) -> dict:
+    """`venues` are the places to list; `population` is everything the map returned (for coverage and chain detection)."""
     label, key, values = CATEGORIES[category]
     shown = venues[:MAX_PLACES]
     total = total_found if total_found is not None else len(venues)
@@ -38,27 +40,36 @@ def compose_discovery(area: Area, category: str, venues: list[Venue], *, retriev
     evidence += [{"id": v.evidence_id, "url": v.url, "label": f"OpenStreetMap: {v.name}", "retrievedAt": date,
                   "locator": f"{key}={'/'.join(values)}; tags as mapped"} for v in shown]
     venue_ids = [v.evidence_id for v in shown]
-    with_hours = sum(1 for v in venues if v.hours)
-    with_site = sum(1 for v in venues if v.website)
-    with_street = sum(1 for v in venues if v.street)
+    population = population or venues
+    with_hours = sum(1 for v in population if v.hours)
+    with_site = sum(1 for v in population if v.website)
+    with_street = sum(1 for v in population if v.street)
+    chains = chain_keys(population)
+    features = [venue_features(v, chains) for v in shown]
+    independent = sum(1 for v in population if venue_features(v, chains)[0] == "Independent")
+    shown_independent = sum(1 for f in features if f[0] == "Independent")
 
     editorial = editorial or {}
     title = (editorial.get("title") or f"{label} in {area.short_name}, as the map has them")[:200]
     summary = (editorial.get("summary") or
                f"{total} named {label.lower()} are mapped inside {area.short_name} in OpenStreetMap; this note lists {len(shown)}, "
-               f"preferring places whose mappers recorded hours and a website. It is a map excerpt, not a ranking or a review.")[:1000]
+               f"preferring complete records and capping any one brand at two. It is a map excerpt, not a ranking or a review.")[:1000]
     method = (f"OpenStreetMap lists {total} named {label.lower()} inside the mapped boundary of {area.name}. "
-              f"Of those, {with_hours} carry opening hours, {with_site} a website and {with_street} a street address. "
-              f"This note shows {len(shown)}, sorted to prefer complete records, then alphabetically. Hours, addresses and links are copied "
+              f"Of those, {with_hours} carry opening hours, {with_site} a website and {with_street} a street address; {independent} carry no brand tag "
+              f"and are not mapped at three or more locations, which this note calls independent. "
+              f"This note shows {len(shown)} ({shown_independent} independent), ranked by how complete each record is, with no brand shown more than "
+              f"twice, then alphabetically. Features are copied from explicit map tags; a missing tag means unknown, not absent. Hours, addresses and links are copied "
               f"from map tags on the retrieval date recorded with each source; they can be outdated, and the agent did not visit, call or rate any place.")
-    rows = [[_cell(v.name, 200), _cell(v.street, 200), _cell(v.hours, 300), _cell(v.website, 500)] for v in shown]
+    rows = [[_cell(v.name, 200), _cell(v.street, 200), _cell(v.hours, 300), _cell(v.website, 500), _cell(", ".join(f), 300)]
+            for v, f in zip(shown, features)]
     blocks = [
         {"id": "method", "type": "text", "mode": "fact", "text": method, "evidenceIds": ["osm-area", *venue_ids]},
-        {"id": "places", "type": "table", "mode": "fact", "columns": ["Place", "Street", "Hours as tagged", "Website as tagged"],
+        {"id": "places", "type": "table", "mode": "fact", "columns": ["Place", "Street", "Hours as tagged", "Website as tagged", "Features as tagged"],
          "rows": rows, "evidenceIds": venue_ids},
         {"id": "coverage", "type": "chart", "mode": "fact", "chartType": "bar", "unit": "places",
          "points": [{"label": "Named places", "value": total}, {"label": "With hours", "value": with_hours},
-                    {"label": "With website", "value": with_site}, {"label": "With street address", "value": with_street}],
+                    {"label": "With website", "value": with_site}, {"label": "With street address", "value": with_street},
+                    {"label": "Independent", "value": independent}],
          "evidenceIds": ["osm-area", *venue_ids]},
     ]
     picks = _grounded_picks(editorial.get("picks") or [], shown)
@@ -82,7 +93,9 @@ def compose_discovery(area: Area, category: str, venues: list[Venue], *, retriev
         "extensions": {"newsroom.local-discovery": {"producer": "local-discovery", "framework": "adalflow", "model": model,
                                                      "source": "openstreetmap", "osmTimestamp": osm_timestamp,
                                                      "brief": {"area": area.short_name, "areaOsm": f"{area.osm_type}/{area.osm_id}",
-                                                               "category": category, "shown": len(shown), "found": total}}},
+                                                               "category": category, "shown": len(shown), "found": total}},
+                       # renderer hint: block id -> column whose comma-separated cells become filter chips
+                       "newsroom.facets": {"places": "Features as tagged"}},
     }
 
 

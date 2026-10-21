@@ -22,7 +22,7 @@ from datetime import datetime, timezone
 from . import AGENT_NAME
 from .compose import MAX_PLACES, compose_discovery, compose_merchant
 from .memory import Memory, fingerprint
-from .osm import CATEGORIES, Area, SourceError, geocode, parse_venues, search_places, select_venues
+from .osm import CATEGORIES, Area, SourceError, chain_keys, geocode, parse_venues, search_places, select_venues, venue_features
 from .publisher import Newsroom, NewsroomError
 
 DEFAULT_MODEL = "claude-opus-5-5"
@@ -56,7 +56,7 @@ def build_editor(model: str = DEFAULT_MODEL):
         summary: str = field(default="", metadata={"desc": "Two sentences, under 400 characters, saying what the list is and is not."})
         how_to_read: str = field(default="", metadata={"desc": "Three to five sentences of practical advice on using a map-derived list."})
         picks: list = field(default_factory=list, metadata={"desc": "Up to 5 objects {name, reason}; name must match a listed place exactly; "
-                                                                      "reason must cite only the tags shown (hours, cuisine, website, street)."})
+                                                                      "reason must cite only the tags shown (hours, features, website, street)."})
         __output_fields__ = ["title", "summary", "how_to_read", "picks"]
 
     parser = DataClassParser(data_class=Editorial, return_data_class=True, format_type="json")
@@ -71,8 +71,9 @@ def build_editor(model: str = DEFAULT_MODEL):
 
 def write_editorial(editor, area: Area, category: str, venues: list) -> dict | None:
     label = CATEGORIES[category][0]
-    listing = "\n".join(f"- {v.name} | street: {v.street or 'n/a'} | hours: {v.hours or 'n/a'} | website: {v.website or 'n/a'} | cuisine: {v.cuisine or 'n/a'}"
-                        for v in venues[:MAX_PLACES])
+    chains = chain_keys(venues)
+    listing = "\n".join(f"- {v.name} | street: {v.street or 'n/a'} | hours: {v.hours or 'n/a'} | website: {v.website or 'n/a'} | "
+                        f"features: {', '.join(venue_features(v, chains))}" for v in venues[:MAX_PLACES])
     prompt = f"Area: {area.name}\nCategory: {label}\nPlaces as mapped:\n{listing}\n\nWrite the editorial fields."
     output = editor(prompt_kwargs={"input_str": prompt})
     if output.error or output.data is None:
@@ -160,7 +161,8 @@ class LocalScout:
             except Exception as e:  # model problems must not block a factual note
                 self.log(json.dumps({"editor": "failed", "error": e.__class__.__name__}))
         document = compose_discovery(area, category, selected, retrieved_at=retrieved, osm_timestamp=osm_ts, editorial=editorial,
-                                     model=self.model if editorial else None, total_found=len(venues))
+                                     model=self.model if editorial else None, total_found=len(venues),
+                                     population=venues)
         report = {"area": area.name, "category": category, "found": len(venues), "shown": len(selected), "editorial": bool(editorial)}
         return document, report
 

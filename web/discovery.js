@@ -1,14 +1,62 @@
 export const originLabels = { web: 'From the web', user_material: 'Shared materials · permission declared', official: 'Official claim · unverified', original: 'Agent original' };
-export function selectPublications(rows, { query = '', topic = '', kind = '', agent = '', savedOnly = false, saved = [] } = {}) {
-  const needle = query.trim().toLocaleLowerCase();
-  return rows.filter(p => {
+// Field weights for query matching; body text (blocks, table cells) counts so a feature like "wi-fi" finds the note listing it.
+const fieldWeights = { title: 3, topics: 2, summary: 1.5, agent: 1, body: 0.5 };
+const tokenize = text => text.toLocaleLowerCase().split(/[\s,，、·|/]+/).filter(Boolean);
+function fields(p) {
+  const d = p.document;
+  const body = (d.blocks || []).flatMap(b => [b.text, ...(b.rows || []).flat()]).filter(v => v != null).join(' ');
+  return { title: d.title || '', topics: (d.topics || []).join(' '), summary: d.summary || '', agent: p.agent.name, body };
+}
+// Every query token must match some field (AND); score sums the best field weight per token, decayed by age (30-day half-life).
+export function matchScore(p, tokens, now = Date.now()) {
+  const f = Object.fromEntries(Object.entries(fields(p)).map(([k, v]) => [k, v.toLocaleLowerCase()]));
+  let score = 0;
+  for (const t of tokens) {
+    const best = Math.max(0, ...Object.entries(fieldWeights).map(([k, w]) => f[k].includes(t) ? w : 0));
+    if (!best) return 0;
+    score += best;
+  }
+  const ageDays = Math.max(0, (now - (Date.parse(p.createdAt) || now)) / 864e5);
+  return score * 0.5 ** (ageDays / 30);
+}
+// Greedy re-rank: each further result from the same agent is discounted, so one prolific publisher cannot fill the top.
+export function crowd(scored, penalty = 0.5) {
+  const out = [], seen = new Map(), pool = [...scored];
+  while (pool.length) {
+    let bestIndex = 0, best = -1;
+    pool.forEach(({ p, score }, i) => { const s = score * penalty ** (seen.get(p.agent.id) || 0); if (s > best) { best = s; bestIndex = i; } });
+    const [{ p }] = pool.splice(bestIndex, 1); out.push(p); seen.set(p.agent.id, (seen.get(p.agent.id) || 0) + 1);
+  }
+  return out;
+}
+export function selectPublications(rows, { query = '', topic = '', kind = '', agent = '', savedOnly = false, saved = [], now = Date.now() } = {}) {
+  const tokens = tokenize(query);
+  const kept = rows.filter(p => {
     if (savedOnly && !saved.includes(p.publicationId)) return false;
     if (agent && p.agent.id !== agent) return false;
-    if (p.action === 'retract') return savedOnly && !needle && !topic && !kind;
+    if (p.action === 'retract') return savedOnly && !tokens.length && !topic && !kind;
     const d = p.document;
-    return (!topic || d.topics?.includes(topic)) && (!kind || d.origin?.kind === kind) &&
-      (!needle || [d.title, d.summary, p.agent.name, ...(d.topics || [])].join(' ').toLocaleLowerCase().includes(needle));
+    return (!topic || d.topics?.includes(topic)) && (!kind || d.origin?.kind === kind);
   });
+  if (!tokens.length) return kept; // no query: keep the feed's newest-first order
+  const scored = kept.filter(p => p.action === 'publish').map(p => ({ p, score: matchScore(p, tokens, now) })).filter(x => x.score > 0);
+  return crowd(scored);
+}
+// Facet chips for a table column of comma-separated labels. A label on every row (or only one) cannot narrow
+// the list, so it is dropped; the rest are ordered by how evenly they split the rows, then by count.
+export function tableFacets(block, column, limit = 12) {
+  const index = block.columns.indexOf(column);
+  if (index < 0) return [];
+  const counts = new Map(), n = block.rows.length;
+  block.rows.forEach(row => new Set(rowLabels(row[index])).forEach(l => counts.set(l, (counts.get(l) || 0) + 1)));
+  return [...counts].filter(([, c]) => c >= 2 && c < n).sort((a, b) => b[1] * (n - b[1]) - a[1] * (n - a[1]) || b[1] - a[1] || a[0].localeCompare(b[0]))
+    .slice(0, limit).map(([label, count]) => ({ label, count }));
+}
+export const rowLabels = cell => String(cell).split(',').map(s => s.trim()).filter(s => s && s !== '—');
+export function filterRows(block, column, selected) {
+  const index = block.columns.indexOf(column);
+  if (index < 0 || !selected.length) return block.rows;
+  return block.rows.filter(row => { const labels = rowLabels(row[index]); return selected.every(l => labels.includes(l)); });
 }
 export function coverImage(doc) { return doc.blocks?.find(b => b.type === 'media' && b.mediaType === 'image'); }
 export function readSaved(storage) {

@@ -60,6 +60,21 @@ class GeocodingAndSearch(unittest.TestCase):
         self.assertEqual(len({(v.name.lower(), v.street.lower()) for v in chosen}), 12)
         self.assertTrue(all(v.url.startswith("https://www.openstreetmap.org/") for v in chosen))
 
+    def test_brand_cap_and_features(self):
+        venues, _ = osm.parse_venues(OVERPASS)
+        names = [v.name for v in osm.select_venues(venues, 20)]
+        self.assertEqual(names.count("Starbucks"), 2)  # 19 mapped; completeness alone would list 6
+        self.assertEqual(len(names), 20)
+        self.assertEqual([v.name for v in osm.select_venues(venues, 80, per_brand=80)].count("Starbucks"), 18)  # one duplicate address
+        chains = osm.chain_keys(venues)
+        by_name = {v.name: v for v in venues}
+        self.assertEqual(osm.venue_features(by_name["Chun Yang Tea"], chains), ["Independent", "Wi-Fi", "Outdoor seating", "Bubble tea"])
+        self.assertIn(osm.chain_key(by_name["Starbucks"]), chains)
+        self.assertEqual(osm.venue_features(by_name["Starbucks"], chains)[0], "Chain")
+        untagged = osm.Venue("node", 1, "Corner Cup", {"name": "Corner Cup", "outdoor_seating": "no", "opening_hours": "Mo-Su 07:00-23:00"})
+        self.assertEqual(osm.venue_features(untagged), ["Independent", "Open after 9pm"])  # "no" is not a feature
+        self.assertEqual(osm.venue_features(untagged, {"corner cup"})[0], "Chain")  # name density
+
     def test_search_places_falls_back_to_next_endpoint(self):
         calls = []
 
@@ -87,12 +102,17 @@ class Composition(unittest.TestCase):
         self.selected = osm.select_venues(self.venues, 12)
 
     def test_discovery_document_is_valid_protocol(self):
-        doc = compose.compose_discovery(self.area, "cafe", self.selected, retrieved_at="2026-10-12T20:00:00Z", osm_timestamp=self.ts, total_found=len(self.venues))
+        doc = compose.compose_discovery(self.area, "cafe", self.selected, retrieved_at="2026-10-12T20:00:00Z", osm_timestamp=self.ts, total_found=len(self.venues),
+                                        population=self.venues)
+        coverage = {p["label"]: p["value"] for p in doc["blocks"][2]["points"]}
+        self.assertEqual((coverage["With hours"], coverage["Independent"]), (30, 49))  # counts describe all 80, not the 12 shown
         self.assertEqual(doc["contentId"], "local-cafe-santa-clara")
         self.assertEqual(doc["origin"]["kind"], "web")
         self.assertEqual(len(doc["evidence"]), 13)
         self.assertEqual(len(doc["blocks"][1]["rows"]), 12)
         self.assertEqual(doc["blocks"][2]["points"][0]["value"], 80)
+        self.assertEqual(doc["blocks"][1]["columns"][-1], "Features as tagged")
+        self.assertEqual(doc["extensions"]["newsroom.facets"], {"places": "Features as tagged"})
         self.assertLess(len(json.dumps(doc)), 32768)
         self.assertLess(len(json.dumps(doc["extensions"])), 4096)
         self.assertEqual(node_validate(doc), {"ok": True})

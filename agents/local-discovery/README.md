@@ -8,10 +8,17 @@
 
 | 层 | 何时可用 | 做什么 |
 | --- | --- | --- |
-| 确定性流水线 | 始终 | 地理编码区域 → Overpass 查该类别有名字的地点 → 按约束筛选（优先有营业时间和网站的记录，去重，最多 20 个）→ 组装协议文档 → 服务端 `validate` → 按记忆决定 revision 后发布 |
+| 确定性流水线 | 始终 | 地理编码区域 → Overpass 查该类别有名字的地点 → 按约束筛选（按记录完整度排序，同一品牌最多 2 个，去重，最多 20 个）→ 从地图标签提取细粒度特征 → 组装协议文档 → 服务端 `validate` → 按记忆决定 revision 后发布 |
 | AdalFlow 层 | 配置了模型 key | `Agent`+`Runner` 规划器用 `geocode_area`/`count_places` 两个 `FunctionTool` 把自然语言目标变成结构化 brief；`Generator`+`DataClassParser` 编辑器只根据地图标签写标题、摘要、阅读建议和最多 5 条推荐，推荐里出现的店名必须在列表中，否则丢弃 |
 
 模型输出永远不会绕过事实层：事实块和表格来自数据，模型文字标为 opinion/analysis，并且在 `extensions` 里记录所用模型。
+
+## 筛选与特征标签
+
+- **品牌打散**：品牌由 OSM 的 `brand:wikidata`/`brand` 识别，没有品牌标签但在区域内出现 3 次及以上的同名地点也算连锁。排序按记录完整度（营业时间、网站、地址、显式特征标签），每个品牌最多占 2 个位置，名额不够时才用溢出的连锁补齐。Santa Clara 夹具里 80 家咖啡馆有 19 家 Starbucks；只按完整度排时前 20 里有 6 家，打散后 2 家。
+- **特征标签**：表格新增 "Features as tagged" 列，每个标签都来自该地点自己的 OSM 标签（`internet_access`、`outdoor_seating`、`wheelchair`、`takeaway`、`diet:*`、`website:menu`、`cuisine`、营业时间晚于 21 点），所以引用的就是这一行已有的证据链接。只认显式的 yes 值；没标就是未知，不写成"没有"。
+- **前端筛选**：文档在 `extensions["newsroom.facets"]` 里声明哪一列可以拿来筛选，平台在表格上方渲染筛选标签，按区分度排序（覆盖全部行或只覆盖 1 行的标签不显示），多选取交集。
+- **覆盖率**：coverage 图和方法说明按 Overpass 返回的全部地点计数（此前误按展示的子集计数）。
 
 ## 运行
 
@@ -47,7 +54,7 @@ python3 -m local_discovery --goal "independent coffee near Santa Clara Universit
 cd agents/local-discovery && python3 -m unittest discover -s tests -v
 ```
 
-10 个离线测试覆盖地理编码筛选、Overpass 查询与端点回退、地点筛选、文档组装、模型推荐的落地校验、商户文档、记忆与 revision 逻辑；每份文档都用平台自己的 `server/publishing/protocol.mjs` 校验。根目录 `npm test` 会在有 python3 时自动跑这组测试和一次离线预览。
+12 个离线测试覆盖地理编码筛选、品牌打散与特征标签、Overpass 查询与端点回退、地点筛选、文档组装、模型推荐的落地校验、商户文档、记忆与 revision 逻辑；每份文档都用平台自己的 `server/publishing/protocol.mjs` 校验。根目录 `npm test` 会在有 python3 时自动跑这组测试和一次离线预览。
 
 ## 边界
 

@@ -1,18 +1,32 @@
-import { originLabels, selectPublications, coverImage, readSaved, publisherName, mediaVariants } from './discovery.js';
+import { originLabels, selectPublications, coverImage, readSaved, publisherName, mediaVariants, tableFacets, filterRows } from './discovery.js';
 const el = (tag, text = '', cls = '') => { const node = document.createElement(tag); node.textContent = text; if (cls) node.className = cls; return node; };
 const $ = id => document.getElementById(id);
 const modes = { fact: 'Source claim · not independently verified', analysis: 'Analysis · based on linked sources', opinion: 'Perspective', fiction: 'Creative writing / fiction' };
 const time = n => new Date(n).toLocaleString('en-US');
 function link(url, label) { const a = el('a', label); const local = /^\/media\/[a-z0-9-]+-[a-f0-9]{12}-(480|960)\.webp$/.test(url); const u = new URL(url, location.href); if (local || (u.protocol === 'https:' && !u.username && !u.password)) { a.href = local ? assetURL(url) : u.href; a.target = '_blank'; a.rel = 'noopener noreferrer nofollow'; } return a; }
 async function get(path) { const r = await fetch(path, { cache: 'no-store', signal: AbortSignal.timeout(10000) }); if (!r.ok) throw new Error(`Could not load (${r.status})`); return r.json(); }
-function block(b, evidence) {
+function block(b, evidence, facetColumn) {
   const section = el('section', '', 'content-block'); section.append(el('span', modes[b.mode], 'mode'));
   if (b.type === 'text') section.append(el('p', b.text));
   if (b.type === 'quote') section.append(el('blockquote', b.text));
   if (b.type === 'table') {
     const wrap = el('div', '', 'table-wrap'), table = el('table'), head = el('thead'), tr = el('tr');
     b.columns.forEach(c => { const th = el('th', c); th.scope = 'col'; tr.append(th); }); head.append(tr); table.append(head);
-    const body = el('tbody'); b.rows.forEach(row => { const tr = el('tr'); row.forEach(v => tr.append(el('td', String(v)))); body.append(tr); }); table.append(body); wrap.append(table); section.append(wrap);
+    const body = el('tbody'), fill = rows => body.replaceChildren(...rows.map(row => { const tr = el('tr'); row.forEach(v => tr.append(el('td', String(v)))); return tr; }));
+    fill(b.rows); table.append(body); wrap.append(table);
+    const facets = facetColumn ? tableFacets(b, facetColumn) : [];
+    if (facets.length) {
+      const chips = el('div', '', 'chips'), status = el('p', '', 'meta'), picked = new Set();
+      chips.setAttribute('aria-label', `Filter by ${facetColumn}`); status.setAttribute('aria-live', 'polite');
+      const update = () => { const rows = filterRows(b, facetColumn, [...picked]); fill(rows); status.textContent = picked.size ? `${rows.length} of ${b.rows.length} rows` : ''; };
+      facets.forEach(({ label, count }) => {
+        const chip = el('button', `${label} · ${count}`, 'chip'); chip.type = 'button'; chip.setAttribute('aria-pressed', 'false');
+        chip.onclick = () => { picked.has(label) ? picked.delete(label) : picked.add(label); chip.classList.toggle('active', picked.has(label)); chip.setAttribute('aria-pressed', String(picked.has(label))); update(); };
+        chips.append(chip);
+      });
+      section.append(chips, status);
+    }
+    section.append(wrap);
   }
   if (b.type === 'chart') {
     const max = Math.max(1, ...b.points.map(p => p.value));
@@ -32,7 +46,7 @@ function card(p) {
     const provenance = el('div', '', 'provenance'); provenance.append(el('strong', originLabels[doc.origin?.kind] || 'Source not declared'), el('p', doc.origin?.statement || 'The publisher has not supplied a source statement.'));
     if (doc.origin?.representedEntity) provenance.append(el('p', `Represented entity (self-declared)：${doc.origin.representedEntity}`));
     provenance.append(el('small', 'Sources, permissions and identity are publisher declarations, not platform verification.')); article.append(provenance);
-    doc.blocks.forEach(b => article.append(block(b, doc.evidence)));
+    doc.blocks.forEach(b => article.append(block(b, doc.evidence, doc.extensions?.['newsroom.facets']?.[b.id])));
     if (doc.evidence.length) {
       const details = el('details'), sources = el('ol', '', 'sources'); details.append(el('summary', 'Sources & further reading'));
       doc.evidence.forEach(e => { const li = el('li'); li.append(link(e.url, e.label)); if (e.locator) li.append(el('p', e.locator)); if (e.retrievedAt) li.append(el('p', `Publisher-reported retrieval time：${time(e.retrievedAt)}`, 'meta')); sources.append(li); }); details.append(sources); article.append(details);
