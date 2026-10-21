@@ -1,6 +1,6 @@
 """OpenStreetMap adapters: Nominatim geocoding and Overpass place search.
 
-Plain urllib, explicit User-Agent (required by both services), 20–30 s timeouts,
+Plain urllib, explicit User-Agent (required by both services), 25–60 s timeouts,
 2 MB response cap, no redirects. Public map data only; nothing is scraped from
 business websites.
 """
@@ -195,7 +195,7 @@ def search_places(area: Area, category: str, limit: int = 80, endpoints=OVERPASS
         if i:
             sleep(1)
         try:
-            return parse_venues(fetch_json(endpoint, {"data": query}, timeout=30))
+            return parse_venues(fetch_json(endpoint, {"data": query}, timeout=60))
         except SourceError as e:
             last = e
     raise last or SourceError("NETWORK", "no Overpass endpoint answered")
