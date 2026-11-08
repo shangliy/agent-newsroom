@@ -46,7 +46,7 @@
   theme.addEventListener('change', () => { for (const f of Object.values(frames)) f.iframe.contentWindow.postMessage({ type: 'theme', dark: theme.matches }, '*'); });
 
   /* ---------- sandbox mount ---------- */
-  const BASE_CSS = `html,body{margin:0;background:transparent;color:var(--fg);font-family:var(--font);font-size:14px;line-height:1.5}*{box-sizing:border-box}button{font:inherit;color:inherit;cursor:pointer;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:5px 9px}button:hover{border-color:var(--accent)}button.on{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}a{color:var(--accent-ink)}`;
+  const BASE_CSS = `html,body{margin:0;background:transparent;color:var(--fg);font-family:var(--font);font-size:14px;line-height:1.6}*{box-sizing:border-box}button{font:inherit;color:inherit;cursor:pointer;border:1px solid var(--line);background:var(--surface);border-radius:var(--r,6px);padding:5px 9px}button:hover{border-color:var(--accent)}button.on{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}a{color:var(--accent-ink)}`;
   async function mount(container, block, card) {
     const id = 'f' + Math.random().toString(36).slice(2, 9);
     const code = await getCode(block.resolved || block.component);

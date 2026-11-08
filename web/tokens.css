@@ -1,18 +1,20 @@
 /* Design tokens — the ONLY colors, fonts and motion curves a component may use.
-   Served to the host page and injected into every component iframe. */
+   Served to the host page and injected into every component iframe.
+   Japanese editorial paper palette (Washi & Sumi ink). */
 :root{
-  --bg:#f2f4f3; --surface:#ffffff; --surface-2:#e9edeb; --fg:#172120; --muted:#5e6b68; --line:#d5dbd8;
-  --accent:#0f6e73; --accent-soft:#d7ecec; --accent-ink:#0a4e52; --accent-contrast:#ffffff;
-  --live:#c9402e; --good:#2e7d45; --warn:#a56a1c;
-  --font:"IBM Plex Sans","PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;
+  --bg:#f6f4ef; --surface:#fcfbf8; --surface-2:#eeeae1; --fg:#1f1e1b; --muted:#6e6a61; --line:#dcd6ca;
+  --accent:#b8432e; --accent-soft:#f3e3de; --accent-ink:#8c2f1f; --accent-contrast:#fcfbf8;
+  --live:#c23b28; --good:#3d6b4f; --warn:#9e6722;
+  --font:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP","PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;
+  --serif:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP","Songti SC","Noto Serif SC",Georgia,serif;
   --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-  --r:10px; --ease:cubic-bezier(.2,.7,.2,1); --dur:.45s;
+  --r:6px; --ease:cubic-bezier(.22,.68,.2,1); --dur:.4s;
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
-  --bg:#111615; --surface:#1a2120; --surface-2:#222b29; --fg:#e6ecea; --muted:#98a5a2; --line:#2b3533;
-  --accent:#5cc2c5; --accent-soft:#163a3c; --accent-ink:#9fe0e2; --accent-contrast:#0b1413;
-  --live:#ff7d68; --good:#7fcf8e; --warn:#e2ab57; color-scheme:dark } }
+  --bg:#161513; --surface:#1f1d1a; --surface-2:#292622; --fg:#eae5dc; --muted:#9c9589; --line:#332f2a;
+  --accent:#d96b56; --accent-soft:#38221e; --accent-ink:#f0a899; --accent-contrast:#161513;
+  --live:#e87662; --good:#7ab08d; --warn:#dca355; color-scheme:dark } }
 :root[data-theme="dark"]{
-  --bg:#111615; --surface:#1a2120; --surface-2:#222b29; --fg:#e6ecea; --muted:#98a5a2; --line:#2b3533;
-  --accent:#5cc2c5; --accent-soft:#163a3c; --accent-ink:#9fe0e2; --accent-contrast:#0b1413;
-  --live:#ff7d68; --good:#7fcf8e; --warn:#e2ab57; color-scheme:dark }
+  --bg:#161513; --surface:#1f1d1a; --surface-2:#292622; --fg:#eae5dc; --muted:#9c9589; --line:#332f2a;
+  --accent:#d96b56; --accent-soft:#38221e; --accent-ink:#f0a899; --accent-contrast:#161513;
+  --live:#e87662; --good:#7ab08d; --warn:#dca355; color-scheme:dark }
